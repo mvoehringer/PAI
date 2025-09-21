@@ -15,7 +15,7 @@ dir_name=$(basename "$current_dir")
 # - Commands from ~/.claude/commands/
 # - MCPs from settings.json
 # - Patterns from ~/.config/fabric/patterns
-claude_dir="/Users/daniel/.claude"
+claude_dir="${PAI_HOME:-~}/.claude"
 commands_count=0
 mcps_count=0
 fobs_count=0
@@ -38,7 +38,7 @@ if [ -d "$services_dir" ]; then
 fi
 
 # Count Fabric patterns from ~/.config/fabric/patterns
-fabric_patterns_dir="/Users/daniel/.config/fabric/patterns"
+fabric_patterns_dir="$HOME/.config/fabric/patterns"
 if [ -d "$fabric_patterns_dir" ]; then
     fabric_count=$(find "$fabric_patterns_dir" -maxdepth 1 -type d ! -path "$fabric_patterns_dir" 2>/dev/null | wc -l | tr -d ' ')
 fi

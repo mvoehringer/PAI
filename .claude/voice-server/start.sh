@@ -15,7 +15,7 @@ pkill -f "voice-server/server.ts" 2>/dev/null
 
 # Start the server
 echo "🚀 Starting PAIVoice Server on port $PORT"
-cd /Users/daniel/.claude/voice-server
+cd "${PAI_HOME:-~}/.claude/voice-server"
 bun run server.ts &
 
 echo "✅ Voice server started with PID $!"
