@@ -45,23 +45,32 @@ if [ -d "$fabric_patterns_dir" ]; then
     fabric_count=$(find "$fabric_patterns_dir" -maxdepth 1 -type d ! -path "$fabric_patterns_dir" 2>/dev/null | wc -l | tr -d ' ')
 fi
 
-# Get daily usage data from ccusage (for line 3)
+# Get today's usage data from ccusage (for line 3)
 daily_tokens=""
 daily_cost=""
 if command -v bunx >/dev/null 2>&1; then
-    # Run ccusage daily, strip ANSI codes, extract Total line data
-    ccusage_output=$(bunx ccusage 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | grep "│ Total" | head -1)
+    # Get today's date in YYYY-MM-DD format
+    today=$(date +%Y-%m-%d)
+
+    # Run ccusage daily with JSON output
+    ccusage_output=$(bunx ccusage daily --json 2>/dev/null)
     if [ -n "$ccusage_output" ]; then
-        # Extract tokens and cost
-        daily_input=$(echo "$ccusage_output" | awk -F'│' '{print $4}' | tr -d ' ,')
-        daily_output=$(echo "$ccusage_output" | awk -F'│' '{print $5}' | tr -d ' ,')
-        daily_cost=$(echo "$ccusage_output" | awk -F'│' '{print $9}' | tr -d ' ')
-        
+        # Parse JSON to extract today's tokens and cost only
+        # Filter for today's date and extract values
+        daily_input=$(echo "$ccusage_output" | jq -r --arg today "$today" '.daily[] | select(.date == $today) | .inputTokens // 0')
+        daily_output=$(echo "$ccusage_output" | jq -r --arg today "$today" '.daily[] | select(.date == $today) | .outputTokens // 0')
+        daily_cost=$(echo "$ccusage_output" | jq -r --arg today "$today" '.daily[] | select(.date == $today) | .totalCost // 0')
+
         # Calculate total tokens if both are valid numbers
         if [[ "$daily_input" =~ ^[0-9]+$ ]] && [[ "$daily_output" =~ ^[0-9]+$ ]]; then
             daily_total=$((daily_input + daily_output))
             # Format tokens with commas
             daily_tokens=$(printf "%'d" "$daily_total" 2>/dev/null || echo "$daily_total")
+        fi
+
+        # Format cost to 2 decimal places
+        if [[ "$daily_cost" != "0" ]] && [[ -n "$daily_cost" ]]; then
+            daily_cost=$(printf "$%.2f" "$daily_cost" 2>/dev/null || echo "$daily_cost")
         fi
     fi
 fi
@@ -159,4 +168,4 @@ printf "${KAI_PURPLE}Kai${RESET}${LINE1_PRIMARY} here, running on ${MODEL_PURPLE
 printf "${LINE2_PRIMARY}🔌 MCPs${RESET}${LINE2_PRIMARY}${SEPARATOR_COLOR}: ${RESET}${mcp_names_formatted}${RESET}\n"
 
 # LINE 3 - MOSTLY DARK GREEN: Daily tokens and cost
-printf "${LINE3_PRIMARY}💎 Total Tokens${RESET}${LINE3_PRIMARY}${SEPARATOR_COLOR}: ${RESET}${LINE3_ACCENT}${daily_tokens:-N/A}${RESET}${LINE3_PRIMARY}  Total Cost${RESET}${LINE3_PRIMARY}${SEPARATOR_COLOR}: ${RESET}${COST_COLOR}${daily_cost:-N/A}${RESET}\n"
+printf "${LINE3_PRIMARY}💎 Today's Tokens${RESET}${LINE3_PRIMARY}${SEPARATOR_COLOR}: ${RESET}${LINE3_ACCENT}${daily_tokens:-N/A}${RESET}${LINE3_PRIMARY}  Today's Cost${RESET}${LINE3_PRIMARY}${SEPARATOR_COLOR}: ${RESET}${COST_COLOR}${daily_cost:-N/A}${RESET}\n"
