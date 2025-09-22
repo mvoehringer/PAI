@@ -14,8 +14,8 @@ dir_name=$(basename "$current_dir")
 # - Services count from ~/Projects/FoundryServices/Services
 # - Commands from ~/.claude/commands/
 # - MCPs from settings.json
-# - Patterns from ~/.config/fabric/patterns
-claude_dir="/Users/daniel/.claude"
+# - Patterns from ${PAI_HOME}/.config/fabric/patterns
+claude_dir="${PAI_HOME:-~}/.claude"
 commands_count=0
 mcps_count=0
 fobs_count=0
@@ -26,17 +26,17 @@ if [ -d "$claude_dir/commands" ]; then
     commands_count=$(find "$claude_dir/commands" -maxdepth 1 -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
 fi
 
-# Count MCPs from settings.json
-mcps_count=$(claude mcp list | grep ✓ | wc -l | tr -d ' ' 2>/dev/null || echo "0")
+mcps_count=$(claude mcp list | grep -v 'Checking' | grep -v '^\s*$' | wc -l | tr -d ' ' 2>/dev/null || echo "0")
+
 
 # Count Services from FoundryServices directory
-services_dir="/Users/daniel/Projects/FoundryServices/Services"
+services_dir="${PAI_HOME:~}/Projects/FoundryServices/Services"
 if [ -d "$services_dir" ]; then
     fobs_count=$(find "$services_dir" -type f -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
 fi
 
 # Count Fabric patterns from ~/.config/fabric/patterns
-fabric_patterns_dir="/Users/daniel/.config/fabric/patterns"
+fabric_patterns_dir="${PAI_HOME:~}/.config/fabric/patterns"
 if [ -d "$fabric_patterns_dir" ]; then
     fabric_count=$(find "$fabric_patterns_dir" -maxdepth 1 -type d ! -path "$fabric_patterns_dir" 2>/dev/null | wc -l | tr -d ' ')
 fi
