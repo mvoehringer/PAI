@@ -12,12 +12,11 @@
 
 <br/>
 
-![Static Badge](https://img.shields.io/badge/mission-upgrade_humans_using_AI-purple)
+![Static Badge](https://img.shields.io/badge/mission-upgrade_humans_using_AI-8B5CF6)
 ![GitHub last commit](https://img.shields.io/github/last-commit/danielmiessler/PAI)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Powered%20by-Claude%20Code-blue)](https://claude.ai/code)
 [![PAI Video](https://img.shields.io/badge/🎥_Watch-PAI_Video-6B46C1)](https://youtu.be/iKwRWwabkEc)
-![Views](https://komarev.com/ghpvc/?username=danielmiessler&label=Repository%20Views&color=purple&style=flat&base=7529)
 
 <br/>
 
@@ -36,9 +35,20 @@
 ## 🚀 **Recent Updates**
 
 > [!TIP]
-> **[🎉 v0.1 Released!](https://github.com/danielmiessler/PAI/releases/tag/v0.1)** - First official release with full architecture documentation
+> **[🎉 v0.2 Released!](https://github.com/danielmiessler/PAI/releases/tag/v0.2)** - Enhanced documentation and Human 3.0 integration
 
 <details open>
+<summary><strong>📅 September 22, 2025 - v0.2 Release</strong></summary>
+
+- 🔗 **Human 3.0**: Added link to projects fit together blog post
+- 📊 **Badges**: Fixed purple color and stats display issues
+- 📝 **Documentation**: Improved table formatting and structure
+- ✨ **Polish**: Enhanced README readability and navigation
+- 🔧 **Fixes**: Minor formatting and display improvements
+
+</details>
+
+<details>
 <summary><strong>📅 September 21, 2025 - v0.1 Release</strong></summary>
 
 - 🎉 **Release**: Published v0.1 - Initial public release
@@ -189,10 +199,12 @@ PAI is part of the journey toward Human 3.0—where humans are augmented by AI t
 </tr>
 </table>
 
-### 🌟 **Why PAI is Different**
+### 🌟 **Why This System is Different**
 
+> *This system is designed from the very beginning to be available to anybody and to grow and scale with you throughout your life.*
+
+- **🔓 Open Framework**: No vendor lock-in, complete transparency, you own everything
 - **🌍 Universal**: Works for anyone, anywhere, in any profession or life situation
-- **🔓 Open Source**: No vendor lock-in, complete transparency, you own everything
 - **🤖 Platform Independent**: Core structure works with Claude, GPT, Gemini, or any AI platform
 - **🧠 Persistent Memory**: Your AI remembers every context, project, and conversation
 - **🎯 Task Agnostic**: From writing a blog to tracking medical data to running a business
@@ -235,11 +247,11 @@ graph TD
     style Output fill:#111827,stroke:#ef4444,stroke-width:2px,color:#e5e7eb
 ```
 
+### 📁 **UFC Context System**
+
 <table>
 <tr>
-<td width="33%" valign="top">
-
-### 📁 **UFC Context System**
+<td width="50%">
 
 ```
 ~/.claude/context/
@@ -258,54 +270,68 @@ graph TD
     └── credit-cards/
 ```
 
+</td>
+<td width="50%">
+
 **Features:**
-- Persistent memory
-- Plain text files
-- Dynamic loading
-- Hierarchical organization
-
-</td>
-<td width="33%" valign="top">
-
-### ⚡ **Custom Commands**
-
-**Professional:**
-- `write-blog` - Content generation
-- `get-newsletter-stats` - Beehiiv metrics
-- `design-review` - Code analysis
-- `create-consulting-document`
-- `update-daemon` - API management
-
-**Personal:**
-- `answer-finance-question`
-- `get-life-log` - Limitless.ai integration
-- `send-text-alert` - SMS notifications
-- `track-health-metrics`
-- `capture-learning`
-
-**60+ commands** ready to use
-
-</td>
-<td width="33%" valign="top">
-
-### 🤖 **Specialized Agents**
-
-| Agent | Purpose | Tools |
-|-------|---------|-------|
-| **Researcher** | Deep web research | WebSearch, WebFetch |
-| **Engineer** | Production code | Testing, Debugging |
-| **Designer** | UX/UI design | Figma, shadcn/ui |
-| **Pentester** | Security testing | Nmap, Burp |
-| **Architect** | System design | Diagrams, PRDs |
-
-**With:**
-- ElevenLabs voices
-- Task parallelization
-- Tool integration
+- ✅ Persistent memory across sessions
+- 📄 Plain text files - human readable
+- ⚡ Dynamic loading based on context
+- 📂 Hierarchical organization
 
 </td>
 </tr>
 </table>
+
+### ⚡ **Custom Commands**
+
+> [!NOTE]
+> **These are examples from my setup. Your PAI will have completely different commands based on YOUR unique needs. The possibilities are infinite!**
+
+<table>
+<tr>
+<td width="50%">
+
+**💼 Professional:**
+- `write-blog` - Content generation
+- `get-newsletter-stats` - Beehiiv metrics  
+- `design-review` - Code analysis
+- `create-consulting-document` - Client docs
+- `update-daemon` - API management
+
+</td>
+<td width="50%">
+
+**🏠 Personal:**
+- `answer-finance-question` - Financial insights
+- `get-life-log` - Limitless.ai integration
+- `send-text-alert` - SMS notifications
+- `track-health-metrics` - Wellness tracking
+- `capture-learning` - Knowledge capture
+
+</td>
+</tr>
+</table>
+
+**🚀 60+ commands** ready to use out of the box
+
+### 🤖 **Specialized Agents**
+
+> [!IMPORTANT]
+> **These agents are examples. You'll create your own specialized agents for YOUR specific workflows - artists might have creative agents, doctors might have diagnostic agents, teachers might have curriculum agents. The system adapts to YOU.**
+
+| Agent | Purpose | Tools | Use Case |
+|:------|:--------|:------|:---------|
+| **🔍 Researcher** | Deep web research | WebSearch, WebFetch | Information gathering |
+| **⚙️ Engineer** | Production code | Testing, Debugging | Software development |
+| **🎨 Designer** | UX/UI design | Figma, shadcn/ui | Interface creation |
+| **🔒 Pentester** | Security testing | Nmap, Burp | Vulnerability assessment |
+| **🏗️ Architect** | System design | Diagrams, PRDs | Technical planning |
+
+**Enhanced with:**
+- 🎙️ ElevenLabs voice synthesis
+- ⚡ Task parallelization
+- 🔌 Deep tool integration
 
 ### 🪝 **Dynamic Hook System**
 
@@ -313,8 +339,8 @@ graph TD
 <tr>
 <td width="50%">
 
-**Context Loading Hooks:**
-- `submit-user-hook` - Loads context based on intent
+**📥 Context Loading Hooks:**
+- `submit-user-hook` - Loads context by intent
 - `load-dynamic-requirements` - Smart routing
 - Automatic agent selection
 - Domain-specific knowledge injection
@@ -322,9 +348,9 @@ graph TD
 </td>
 <td width="50%">
 
-**Integration Hooks:**
+**🔧 Integration Hooks:**
 - Pre/post command execution
-- Error handling and recovery
+- Error handling and recovery  
 - Rate limiting and validation
 - Security scanning
 
@@ -336,39 +362,39 @@ graph TD
 
 <table>
 <tr>
-<td width="25%">
+<td>
 
-**Browser & Testing**
-- Playwright
-- Puppeteer
-- Selenium
+**🌐 Browser & Testing**
+- Playwright automation
+- Puppeteer control
+- Selenium testing
 - Visual regression
 
 </td>
-<td width="25%">
+<td>
 
-**Financial**
+**💳 Financial**  
 - Stripe API
-- Square
-- PayPal
+- Square payments
+- PayPal integration
 - Crypto wallets
 
 </td>
-<td width="25%">
+<td>
 
-**Analytics**
+**📊 Analytics**
 - Google Analytics
-- Mixpanel
-- Beehiiv
+- Mixpanel tracking
+- Beehiiv stats
 - Site metrics
 
 </td>
-<td width="25%">
+<td>
 
-**Communication**
+**💬 Communication**
 - ElevenLabs TTS
 - OpenAI Voice
-- Discord
+- Discord bots
 - Email/SMS
 
 </td>
@@ -380,7 +406,7 @@ graph TD
 ## 🚀 **Quick Start**
 
 > [!NOTE]
-> PAI works with [Claude Code](https://claude.ai/code), but the architecture supports any AI platform (GPT, Gemini, etc.)
+> PAI was originally built with [Claude Code](https://claude.ai/code), but the architecture supports any AI platform (GPT, Gemini, etc.)
 > Requires [Bun](https://bun.sh) JavaScript runtime for the current implementation.
 
 ### **Installation**
@@ -475,7 +501,8 @@ PORT="8888"                        # Voice server port
 
 <div align="center">
 
-> **Note:** These are examples from my personal PAI setup. Your system will have completely different commands based on your unique needs, workflows, and goals.
+> [!IMPORTANT]
+> **These are examples from my personal PAI setup. Your system will have completely different commands based on YOUR unique needs, workflows, and goals. The beauty of PAI is that it becomes whatever YOU need it to be.**
 
 </div>
 
