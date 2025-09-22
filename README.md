@@ -389,7 +389,7 @@ graph TD
 
 ```bash
 # Install Bun (JavaScript runtime)
-brew install oven-sh/bun/bun 
+brew install bun
 
 # Get Claude Code (AI interface)
 # Visit: https://claude.ai/code
